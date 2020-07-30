@@ -219,7 +219,7 @@ const char * ptrToName = name;          // 数组被退化成指针
 
 在这里，`const char*`指针`ptrToName`使用`name`初始化，实际的`name`的类型是`const char[13]`。这些类型（`const char*`和`const char[13]`）是不一样的，但是因为数组到指针的退化规则，代码会被正常编译。
 
-但是如果一个数组传递给一个安置传递的模板参数里面情况会如何？会发生什么呢？
+但是如果一个数组传递给一个按值传递的模板参数里面情况会如何？会发生什么呢？
 
 ```cpp
 template<typename T>
@@ -295,7 +295,7 @@ std::array<int, arraySize(keyVals)> mappedVals; // mappedVals长度是七
 
 ##函数参数
 
-数组并不是C++唯一可以退化成指针的东西。函数类型可以被退化成函数指针，和我们之前讨论的数组的推导类似，函数可以被推华城函数指针：
+数组并不是C++唯一可以退化成指针的东西。函数类型可以被退化成函数指针，之前讨论的数组的推导规则也适用于函数类型退化为函数指针的推导过程：
 
 ```cpp
 void someFunc(int， double);    // someFunc是一个函数
